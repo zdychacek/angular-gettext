@@ -9,12 +9,20 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.8\n"
+"X-Generator: Poedit 1.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: /Users/ondrej/Projects/angular-gettext/sample/index.html
 msgid "Ahoj"
 msgstr "Hello"
+
+#: /Users/ondrej/Projects/angular-gettext/sample/js/app.js
+msgid "Angličtina"
+msgstr "English"
+
+#: /Users/ondrej/Projects/angular-gettext/sample/js/app.js
+msgid "Čeština"
+msgstr "Czech"
 
 #: /Users/ondrej/Projects/angular-gettext/sample/index.html
 msgid "Jazyk"
@@ -39,3 +47,7 @@ msgstr "Rabbit"
 #: /Users/ondrej/Projects/angular-gettext/sample/index.html
 msgid "Počet"
 msgstr "Count"
+
+#: /Users/ondrej/Projects/angular-gettext/sample/js/app.js
+msgid "Ruština"
+msgstr "Russian"

@@ -1,16 +1,19 @@
 angular.module('app', ['gettext'])
-	.controller('AppCtrl', function ($scope, $rootScope, gettextCatalog) {
+	.controller('AppCtrl', function ($scope, $rootScope, gettextCatalog, gettext) {
+		$rootScope.$on('gettextLanguageChanged', function () {
+			$scope.langs = {
+				selected: 'en',
+				available: [
+					{ code: 'en', title: gettext('Angličtina') },
+					{ code: 'cs', title: gettext('Čeština') },
+					{ code: 'ru', title: gettext('Ruština') }
+				]
+			};
+		});
+
 		gettextCatalog.setBaseLanguage('cs');
 		gettextCatalog.setCurrentLanguage('cs');
 		gettextCatalog.debug = true;
-
-		// save dictionary on $rootScope for global access
-		$rootScope.$dictionary = {};
-
-		// when lang is changed update global dictionary
-		$scope.$on('gettextLanguageChanged', function () {
-			$rootScope.$dictionary = gettextCatalog.getCurrentStrings();
-		});
 
 		// list of languages
 		$scope.languages = {
@@ -32,7 +35,7 @@ angular.module('app', ['gettext'])
 		$scope.count = 5;
 		
 		// sentences which have to be included in translation template MUST BE annotated with function `gettext(...)`
-		$scope.test = $scope.$dictionary[gettext('Králík')];
+		$scope.test = gettext('Králík');
 		
 		// observable plurals - can be changed
 		$scope.plurals = ['{{count}} lodě', '{{count}} lodí'];
@@ -40,4 +43,9 @@ angular.module('app', ['gettext'])
 		$timeout(function () {
 			$scope.plurals[1] = '{{count}} lodííí';
 		}, 2000);
+	})
+	.filter('curr', function ($filter, gettextCatalog) {
+		return function (input) {
+			return $filter('currency')(input, gettextCatalog.currentLanguage);
+		}
 	});

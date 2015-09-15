@@ -1,8 +1,7 @@
 {
   "name": "angular-gettext",
   "version": "0.0.0",
-  "description": "",
-  "main": "",
+  "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,5 +20,6 @@
   },
   "dependencies": {
     "gulp": "^3.8.7"
-  }
+  },
+  "description": ""
 }

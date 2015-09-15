@@ -2,9 +2,18 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
 
 #: /Users/ondrej/Projects/angular-gettext/sample/index.html
 msgid "Ahoj"
+msgstr ""
+
+#: /Users/ondrej/Projects/angular-gettext/sample/js/app.js
+msgid "Angličtina"
+msgstr ""
+
+#: /Users/ondrej/Projects/angular-gettext/sample/js/app.js
+msgid "Čeština"
 msgstr ""
 
 #: /Users/ondrej/Projects/angular-gettext/sample/index.html
@@ -29,4 +38,8 @@ msgstr ""
 
 #: /Users/ondrej/Projects/angular-gettext/sample/index.html
 msgid "Počet"
+msgstr ""
+
+#: /Users/ondrej/Projects/angular-gettext/sample/js/app.js
+msgid "Ruština"
 msgstr ""

@@ -55,7 +55,7 @@ angular.module('gettext', [])
 			},
 
 			getCurrentStrings: function () {
-				this.strings[this.currentLanguage];
+				return this.strings[this.currentLanguage];
 			},
 
 			getStringForm: function (string, n) {
@@ -101,7 +101,7 @@ angular.module('gettext', [])
 
 		return catalog;
 	})
-	.directive('t', function (gettextCatalog, $parse, $animate, $compile) {
+	.directive('translate', function (gettextCatalog, $parse, $animate, $compile) {
 		function assert(condition, missing, found) {
 			if (!condition) {
 				throw new Error('You should add a ' + missing + ' attribute whenever you add a ' + found + ' attribute.');
@@ -113,15 +113,15 @@ angular.module('gettext', [])
 			terminal: true,
 			compile: function compile(element, attrs) {
 				// Validate attributes
-				assert(!attrs.tPlural || attrs.tN, 't-n', 't-plural');
-				assert(!attrs.tN || attrs.tPlural, 't-plural', 't-n');
+				assert(!attrs.translatePlural || attrs.translateN, 'translate-n', 'translate-plural');
+				assert(!attrs.translateN || attrs.translatePlural, 'translate-plural', 'translate-n');
 
 				var msgid = element.html().trim();
-				var translatePlural = attrs.tPlural;
+				var translatePlural = attrs.translatePlural;
 
 				return {
 					post: function (scope, element, attrs) {
-						var countFn = $parse(attrs.tN);
+						var countFn = $parse(attrs.translateN);
 						var pluralScope = null;
 
 						function update () {
@@ -152,14 +152,14 @@ angular.module('gettext', [])
 							$animate.leave(oldContents);
 						}
 
-						if (attrs.tPlural) {
-							scope.$watch(attrs.tN, function (newVal, oldVal) {
+						if (attrs.translatePlural) {
+							scope.$watch(attrs.translateN, function (newVal, oldVal) {
 								if (newVal !== oldVal) {
 									update();
 								}
 							});
 
-							scope.$watchCollection(attrs.tPlural, function (newVal, oldVal) {
+							scope.$watchCollection(attrs.translatePlural, function (newVal, oldVal) {
 								if (newVal !== oldVal) {
 									update();
 								}
@@ -172,7 +172,7 @@ angular.module('gettext', [])
 			}
 		};
 	})
-	.filter('t', function (gettextCatalog) {
+	.filter('translate', function (gettextCatalog) {
 		return function (input) {
 			return gettextCatalog.getString(input);
 		};

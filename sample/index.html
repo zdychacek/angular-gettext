@@ -8,18 +8,18 @@
 	<script src="/js/en.js"></script>
 </head>
 <body ng-controller="MainCtrl">
-	{{ 'Jazyk' | t }}: <select ng-model="languages.current" ng-options="key as value for (key, value) in languages.available"></select>
+	{{ 'Jazyk' | translate }}: <select ng-model="languages.current" ng-options="key as value for (key, value) in languages.available"></select>
 
 	<br/>
 
-	{{ 'Počet' | t }}: <input ng-model="count"/>
+	{{ 'Počet' | translate }}: <input ng-model="count"/>
 
-	<p t t-n="count" t-plural="plurals">Jedna loď</p>
+	<p translate translate-n="count" translate-plural="plurals">Jedna loď</p>
 
-	<p t t-n="count" t-plural="['{{count}} králíci', '{{count}} králíků']">Jeden králík</p>
+	<p translate translate-n="count" translate-plural="['{{count}} králíci', '{{count}} králíků']">Jeden králík</p>
 
-	<p t>Ahoj</p>
+	<p translate>Ahoj</p>
 
-	<p>{{ test }}</p>
+	<select ng-model="langs.selected" ng-options="lang.code as lang.title | translate for lang in langs.available"></select>
 </body>
 </html>
